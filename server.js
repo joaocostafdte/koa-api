@@ -17,4 +17,4 @@ app.use(router.routes()).use(router.allowedMethods());
 
 require("./routes/deltas.routes")(router);
 
-app.listen(3000, () => console.log("Server up...."));
+app.listen(3000, () => console.log("Server up on port 3000"));
