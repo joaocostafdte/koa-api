@@ -23,12 +23,12 @@ function createDeltaList(num) {
 
 function updateDeltaList(deltas) {
   return deltas.map((delta) => {
-    return Object.assign(delta, { status: getRandomFromList(status, 0, 3) });
+    return Object.assign(delta, { status: getRandomFromList(status, 3) });
   });
 }
 
-function getRandomFromList(list, min, max) {
-  return list[getRandomNumber(min, max)];
+function getRandomFromList(list, max) {
+  return list[getRandomNumber(max)];
 }
 
 function generateDelta() {
@@ -41,23 +41,23 @@ function generateDelta() {
 }
 
 function randomizeDeltaDriver() {
-  return getRandomFromList(names, 0, 9);
+  return getRandomFromList(names, 10);
 }
 
 function randomizeDeltaStatus() {
-  return getRandomFromList(status, 0, 3);
+  return getRandomFromList(status, 3);
 }
 
 function randomizeDeltaSector() {
-  return `P${getRandomNumber(1, 100)}`;
+  return `P${getRandomNumber(100)}`;
 }
 
 function randomizeDeltaName() {
-  return `d${getRandomNumber(1, 50)}`;
+  return `D${getRandomNumber(50)}`;
 }
 
-function getRandomNumber(min, max) {
-  return Math.floor((max - min) * Math.random() + min);
+function getRandomNumber(max) {
+  return Math.floor(Math.random() * (max + 1));
 }
 
 module.exports = {
