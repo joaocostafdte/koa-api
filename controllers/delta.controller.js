@@ -1,22 +1,25 @@
-const deltasutil = require("../utils/create.deltas");
+const DeltasService = require("../services/deltas.service");
 
-//Db mockado
-let deltas = deltasutil.createDeltaList(9);
+module.exports = function DeltaController() {
 
-async function findAll(ctx) {
-  try {
-    ctx.body = { deltas };
-    updateDeltas();
-  } catch (err) {
-    ctx.response.status = 500;
-    ctx.body = { message: "Problema ao recuperar todos os deltas" };
+  let deltas = DeltasService().createDeltaList(9);
+  
+  function updateDeltas() {
+    deltas = DeltasService().updateDeltaList(deltas);
+  }
+
+  return {
+      async findAll(ctx) {
+        try {
+          ctx.body = { deltas };
+          updateDeltas();
+        } catch (err) {
+          ctx.response.status = 500;
+          ctx.body = { message: "Problema ao recuperar todos os deltas" };
+        }
+    }
   }
 }
 
-function updateDeltas() {
-  deltas = deltasutil.updateDeltaList(deltas);
-}
 
-module.exports = {
-  findAll,
-};
+

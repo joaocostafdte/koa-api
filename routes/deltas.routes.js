@@ -1,5 +1,5 @@
-const deltasController = require("../controllers/delta.controller");
+const DeltasController = require("../controllers/delta.controller");
 
 module.exports = (router) => {
-  router.get("/deltas", deltasController.findAll);
+  router.get("/deltas", DeltasController().findAll);
 };
