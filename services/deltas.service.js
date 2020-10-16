@@ -1,5 +1,4 @@
 module.exports = function DeltasService() {
-
   const names = [
     "João",
     "Paulo",
@@ -13,7 +12,7 @@ module.exports = function DeltasService() {
     "Gabriel",
     "Alisson",
   ];
-  
+
   const status = ["maintenance", "available", "unavailable", "inUse"];
 
   function getRandomFromList(list, max) {
@@ -58,7 +57,9 @@ module.exports = function DeltasService() {
       return deltas;
     },
     updateDeltaList(deltas) {
-      return deltas.map((delta) =>  Object.assign(delta, { status: getRandomFromList(status, 3) }));
-    }
-  }   
-}
+      return deltas.map((delta) =>
+        Object.assign(delta, { status: getRandomFromList(status, 3) })
+      );
+    },
+  };
+};
